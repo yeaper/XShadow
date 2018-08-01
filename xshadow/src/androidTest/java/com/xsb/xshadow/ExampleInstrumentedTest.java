@@ -1,4 +1,4 @@
-package com.xsb.xshadow;
+package com.yyp.xshadow;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

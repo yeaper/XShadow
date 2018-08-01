@@ -1,4 +1,4 @@
-package com.xsb.xshadow.view;
+package com.yyp.xshadow.view;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,8 +12,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
-import com.xsb.xshadow.config.XShadowProperty;
-import com.xsb.xshadow.config.XShadowSide;
+import com.yyp.xshadow.config.XShadowProperty;
+import com.yyp.xshadow.config.XShadowSide;
 
 /**
  * 阴影控件操作类

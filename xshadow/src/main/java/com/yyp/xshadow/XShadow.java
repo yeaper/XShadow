@@ -1,4 +1,4 @@
-package com.xsb.xshadow;
+package com.yyp.xshadow;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.xsb.xshadow.config.XShadowProperty;
-import com.xsb.xshadow.view.XShadowDrawable;
+import com.yyp.xshadow.config.XShadowProperty;
+import com.yyp.xshadow.view.XShadowDrawable;
 
 /**
  * 阴影布局控件

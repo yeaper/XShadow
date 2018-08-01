@@ -1,4 +1,4 @@
-package com.xsb.xshadow.config;
+package com.yyp.xshadow.config;
 
 import android.support.annotation.IntDef;
 

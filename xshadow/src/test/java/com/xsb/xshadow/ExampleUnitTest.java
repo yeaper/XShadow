@@ -1,4 +1,4 @@
-package com.xsb.xshadow;
+package com.yyp.xshadow;
 
 import org.junit.Test;
 
