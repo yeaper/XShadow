@@ -5,7 +5,7 @@ XShadow是一个阴影控件，支持自定义阴影半径、颜色、宽度、�
 
 运行效果如下图：
 
-![阴影控件效果](https://img-blog.csdn.net/20180801143836154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l5cGNjYw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![阴影控件效果](http://bmob-cdn-20165.b0.upaiyun.com/2018/08/01/7b807da44042f2038062b34ad5ada726.png)
 
 
 1. 添加依赖
@@ -22,7 +22,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.yeaper:XShadow:V1.0'
+    implementation 'com.github.yeaper:XShadow:1.0.1'
 }
 ```
 
@@ -40,7 +40,7 @@ dependencies {
 <dependency>
     <groupId>com.github.yeaper</groupId>
     <artifactId>XShadow</artifactId>
-    <version>v1.0</version>
+    <version>1.0.1</version>
 </dependency>
 
 ```
@@ -52,7 +52,7 @@ dependencies {
 第一种，直接在布局中设置，如下：
 
 ```xml
-<com.xsb.xshadow.XShadow
+<com.yyp.xshadow.XShadow
     android:id="@+id/shadow1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

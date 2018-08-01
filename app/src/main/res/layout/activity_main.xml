@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.xsb.xshadow.XShadow
+    <com.yyp.xshadow.XShadow
         android:id="@+id/shadow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,9 +39,9 @@
                 android:singleLine="true"/>
         </LinearLayout>
 
-    </com.xsb.xshadow.XShadow>
+    </com.yyp.xshadow.XShadow>
 
-    <com.xsb.xshadow.XShadow
+    <com.yyp.xshadow.XShadow
         android:id="@+id/shadow2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,5 +68,5 @@
                 android:singleLine="true"/>
         </LinearLayout>
 
-    </com.xsb.xshadow.XShadow>
+    </com.yyp.xshadow.XShadow>
 </LinearLayout>
