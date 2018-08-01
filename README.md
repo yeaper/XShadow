@@ -1,11 +1,11 @@
 # XShadow
 
-XShadow是一个阴影控件，支持自定义阴影半径、颜色、宽度、内圆角、阴影显示的边
+XShadow是一个阴影控件，支持自定义阴影半径、颜色、宽度、内圆角、阴影显示的四个边
 
 
 运行效果如下图：
 
-![效果演示](https://github.com/yeaper/FloatItemView/blob/master/showApp.gif)
+![阴影控件效果](https://img-blog.csdn.net/20180801143836154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l5cGNjYw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
 1. 添加依赖
@@ -22,7 +22,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.yeaper:FloatItemView:1.0.0'
+    implementation 'com.github.yeaper:XShadow:V1.0'
 }
 ```
 
@@ -39,85 +39,70 @@ dependencies {
 
 <dependency>
     <groupId>com.github.yeaper</groupId>
-    <artifactId>FloatItemView</artifactId>
-    <version>1.0.0</version>
+    <artifactId>XShadow</artifactId>
+    <version>v1.0</version>
 </dependency>
+
 ```
 
 2. 使用
 
-先在布局文件下,加入控件
+只要在布局外面，套一个XShadow布局即可，然后可以设置阴影的几个属性值，设置属性有两种;
+
+第一种，直接在布局中设置，如下：
 
 ```xml
-<com.yeaper.floatitemview.FloatItemView
-        android:id="@+id/float_item_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-```
-
-然后自定义一个悬浮布局
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.xsb.xshadow.XShadow
+    android:id="@+id/shadow1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:background="#fff">
+    app:shadow_color="#21000000"
+    app:shadow_radius="20dp"
+    app:shadow_width="10dp"
+    app:corner_radius="0dp"
+    app:shadow_side="left|bottom|right">
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@color/colorPrimary"
-        android:layout_margin="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#000000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="展示内容"
+            android:textColor="#000000"
+            android:background="@null"
+            android:singleLine="true"/>
+    </LinearLayout>
 
-</LinearLayout>
+</com.xsb.xshadow.XShadow>
 ```
 
-再获取悬浮布局相关View
+第二种，在java代码中设置，如下：
+
 
 ```java
-floatBar = LayoutInflater.from(this).inflate(R.layout.layout_float_bar, null, false);
-avatar = (ImageView) floatBar.findViewById(R.id.avatar);
-name = (TextView) floatBar.findViewById(R.id.name);
+XShadow shadow1 = findViewById(R.id.shadow1);
+shadow1.setProperty(new XShadowProperty()
+        .setShadowColor(0x21000000)
+        .setShadowRadius(dip2px(10))
+        .setCornerRadius(dip2px(2))
+        .setShadowWidth(dip2px(10))
+        .setShadowSide(XShadowSide.ALL));
 ```
 
-现在就可以给FloatItemView设置悬浮的布局，并且设置adapter
+3. 相关属性对应表
 
-OnFloatItemViewCallback接口中有两个方法
- - onStart()：适配数据前的初始化工作
- - updateFloatBar(int position)：悬浮item被顶出界面后，需要进行更新操作，也就是显示下一个item
- 
-```java
-floatItemView.setFloatBar(floatBar)
-                .setAdapter(adapter, new OnFloatItemViewCallback() {
+| 属性名 | 属性类型 | 描述 |
+| ---- | ---- | ---- |
+| shadow_color | color | 阴影颜色 |
+| shadow_radius | dimension | 阴影模糊半径 |
+| corner_radius | dimension | 内圆角半径 |
+| shadow_width | dimension | 阴影宽度 |
+| shadow_side | flag | 阴影显示的边，有left、top、right、bottom、all，可自由组合 |
 
-                    @Override
-                    public void onStart() {
-                        if(dataList.get(0).getGender() == 1){
-                            avatar.setImageResource(R.drawable.boy);
-                        }else{
-                            avatar.setImageResource(R.drawable.girl);
-                        }
-                        name.setText(dataList.get(0).getName());
-                    }
-
-                    @Override
-                    public void updateFloatBar(int position) {
-                        if(dataList.get(position).getGender() == 1){
-                            avatar.setImageResource(R.drawable.boy);
-                        }else{
-                            avatar.setImageResource(R.drawable.girl);
-                        }
-                        name.setText(dataList.get(position).getName());
-                    }
-                });
-```
